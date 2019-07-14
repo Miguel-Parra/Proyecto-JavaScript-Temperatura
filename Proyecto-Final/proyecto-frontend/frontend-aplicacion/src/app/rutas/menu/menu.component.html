@@ -1,0 +1,20 @@
+<h1>MENU</h1>
+<div class="contenedor-menu">
+    <div class="row menu">
+            <div class="col-md-2 celda-vacia"></div>
+            <div class="col-md-2 celda-imagen">
+                <img src="../../../assets/imagenes/logo-temperatura.png" alt="logo_temperatura" class="logo-temperatura">
+            </div>
+            <div class="col-md-2 celda-boton">
+                <button type="button" class="btn btn-success btn-inicio" (click)="mostrarPaginaInicio()">INICIO</button>
+            </div>
+            <div class="col-md-2 celda-boton">
+                <button type="button" class="btn btn-success btn-agregar-lugar" (click)="mostrarPaginaLugares()">AGREGAR LUGAR</button>
+            </div>
+            <div class="col-md-2 celda-boton">
+                <button type="button" class="btn btn-success btn-ver-temperatura" (click)="mostrarPaginaTemperaturas()">VER TEMPERATURA</button>
+            </div>
+            <div class="col-md-2 celda-vacia"></div>
+    </div>
+</div>
+<router-outlet></router-outlet>

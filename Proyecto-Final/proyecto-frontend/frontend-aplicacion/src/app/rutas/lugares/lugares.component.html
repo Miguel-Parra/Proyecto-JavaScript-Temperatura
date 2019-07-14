@@ -1,0 +1,60 @@
+<h1>LUGARES</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-success btn-inicio" [hidden]="mostrar" (click)="mostrarRegistroLugar(true)"> Agregar Nuevo Lugar</button>
+    </div>
+</div>
+
+
+<div class="tabla" [hidden]="mostrar">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">IDENTIFICADOR</th>
+              <th scope="col">NOMBRE DEL LUGAR</th>
+              <th scope="col">COLOR</th>
+              <th scope="col">ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr [hidden]="esconder">
+              <th scope="row">1</th>
+              <td>2</td>
+              <td>3</td>
+              <td>
+                <button type="submit" class="btn btn-primary" (click)="eliminarLugar()">ELIMINAR</button>
+              </td>
+            </tr>    
+          </tbody>
+        </table>
+      </div>
+
+<div class="formulario-lugar" [hidden]="!mostrar">
+        <div class="row formulario-login-row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 formulario-login">
+              <form  
+              #formularioLugar = "ngForm" 
+              (submit)="anadirLugar()"> 
+                  <div class="form-group">
+                    <label for="identificadorLugar">IDENTIFICADOR:</label>
+                    <input id="identificadorLugar" required type="number" min="1" max="3" name="identificador-lugar" class="form-control"  placeholder="Ingrese Identificador del Lugar" [(ngModel)]="identificadorLugar">
+                    
+                    <label for="nombreLugar">NOMBRE DEL LUGAR:</label>
+                    <input id="nombreLugar" required type="text" name="nombre-lugar" class="form-control"  placeholder="Ingrese Nombre del Lugar" [(ngModel)]="nombreLugar">
+    
+                    <label for="color">COLOR:</label>
+                    <br>
+                    <select>
+                            <option value="Rojo">Rojo</option>
+                            <option value="Verde">Verde</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary" [hidden]="!mostrar" (click)="mostrarPaginaLugar(false)"
+                  [disabled]="formularioLugar.invalid">AÑADIR</button>
+                </form>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
