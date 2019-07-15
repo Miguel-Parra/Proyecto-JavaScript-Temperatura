@@ -22,7 +22,10 @@ export class LugaresComponent implements OnInit {
     this.mostrar = valor
   }
 
-  anadirLugar(){
-
+  anadirLugar(formulario){
+    const nombreLugar = formulario.controls.nombrelugar.value;
+    const colorLugar = formulario.controls.color.value;
+    const identificadorLugar = formulario.controls.identificadorlugar.value;
+    console.log("Nombre Lugar:",nombreLugar,"Identificador",identificadorLugar,"Color:",colorLugar);
   }
 }
