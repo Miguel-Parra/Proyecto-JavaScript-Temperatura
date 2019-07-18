@@ -1,0 +1,25 @@
+<h1>LOGIN</h1>
+<div class="row formulario-login-row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 formulario-login">
+      <form  
+      #formularioLogin = "ngForm" 
+      (submit)="login(formularioLogin)"> 
+          <div class="form-group">
+            <label for="nombreUsuario">Nombre Usuario</label>
+            <input id="nombreUsuario" type="text" name="nombreusuario" class="form-control"  placeholder="Ingrese Nombre" [(ngModel)]="nombreUsuario">
+            <label for="passwordUsuario">Password Usuario</label>
+            <input id="passwordUsuario" type="password" name="passwordusuario" class="form-control"  placeholder="Ingrese Password" [(ngModel)]="passwordUsuario" #password>
+            <small id="mensaje" class="form-text text-muted">Hola, Bienvenido a GreenTemp</small>
+          </div>
+          <button type="submit" class="btn btn-danger"
+          [disabled] = "!password.value"
+          >ENTRAR</button>
+          <button type="button" class="btn btn-success" (click)="registrarse()" style="margin-left:15px;"
+          >REGISTRARSE</button>
+          <br>
+          <br>
+        </form>
+  </div>
+  <div class="col-md-4"></div>
+</div>

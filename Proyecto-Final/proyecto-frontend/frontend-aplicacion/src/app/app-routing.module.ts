@@ -5,9 +5,19 @@ import { MenuComponent } from './rutas/menu/menu.component';
 import { SliderComponent } from './rutas/slider/slider.component';
 import { LugaresComponent } from './rutas/lugares/lugares.component';
 import { TemperaturasComponent } from './rutas/temperaturas/temperaturas.component';
+import { LoginComponent } from './rutas/login/login.component';
+import { RegistrarComponent } from './rutas/registrar/registrar.component';
 
 
 const routes: Routes = [
+  {
+    path:'login',
+    component:LoginComponent
+  },
+  {
+    path:'registrar',
+    component:RegistrarComponent
+  },
   {
     path:'menu',
     component:MenuComponent,
@@ -28,7 +38,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo:'/menu/slider',
+    redirectTo:'/login',
     pathMatch:'full'
   },
   {
