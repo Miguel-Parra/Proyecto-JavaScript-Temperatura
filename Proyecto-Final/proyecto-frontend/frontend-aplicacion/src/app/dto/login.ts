@@ -4,4 +4,7 @@ export interface Login{
     id?: number;
     nombre: string;
     password: string;
+    correo?: string;
+    edad?: number;
+    direccion?: string;
 }

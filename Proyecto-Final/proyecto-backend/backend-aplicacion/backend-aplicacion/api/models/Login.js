@@ -16,6 +16,18 @@ module.exports = {
       type: 'string',
       required: true
     },
+    correo:{
+      type:'string',
+      isEmail: true
+    },
+    edad: {
+      type: 'number',
+      required: true
+    },
+    direccion: {
+      type: 'string',
+      required: true
+    }
   },
 
 };

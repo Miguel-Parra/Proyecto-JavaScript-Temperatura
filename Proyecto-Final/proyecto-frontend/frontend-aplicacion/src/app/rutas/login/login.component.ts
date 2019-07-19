@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginHttpService } from 'src/app/servicios/http/login-http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,14 @@ import { LoginHttpService } from 'src/app/servicios/http/login-http.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private readonly _loginHttpService:LoginHttpService) { }
+  constructor(private readonly _loginHttpService:LoginHttpService,
+              private readonly _router:Router) { }
 
   ngOnInit() {
   }
 
   login(formulario){
+    console.log(formulario);
     const nombreUsuario =  formulario.controls.nombreusuario.value;
     const paswordUsuario = formulario.controls.passwordusuario.value;
     console.log("NombreUs: ", nombreUsuario,"Pass:", paswordUsuario );
@@ -21,7 +24,8 @@ export class LoginComponent implements OnInit {
     respuestaLogin$
     .subscribe(
       (datos)=>{
-        if(datos.productoEncontrado.length === 0){
+        var arregloRespuesta = JSON.parse(JSON.stringify(datos));
+        if(arregloRespuesta.productoEncontrado.length == 0){
           alert(`No hay registros del USUARIO ${nombreUsuario} Registrese por favor !!!`);
         }else{
           
@@ -34,6 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   registrarse(){
-    console.log('hola');
+    const url = ['/registrar'];
+    this._router.navigate(url);
   }
 }

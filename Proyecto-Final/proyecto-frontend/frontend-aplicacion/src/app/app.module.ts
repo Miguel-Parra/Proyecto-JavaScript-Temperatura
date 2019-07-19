@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './rutas/login/login.component';
 import { RegistrarComponent } from './rutas/registrar/registrar.component';
 import { LoginHttpService } from './servicios/http/login-http.service';
+import { RegistrarHttpService } from './servicios/http/registrar-https.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoginHttpService } from './servicios/http/login-http.service';
   ],
   providers: [
     LoginHttpService,
+    RegistrarHttpService
   ],
   bootstrap: [AppComponent]
 })

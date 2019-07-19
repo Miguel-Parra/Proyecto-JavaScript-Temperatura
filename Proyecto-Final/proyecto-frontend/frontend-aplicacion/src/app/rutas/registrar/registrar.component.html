@@ -1,1 +1,29 @@
-<p>registrar works!</p>
+<h1>REGISTRAR</h1>
+<div class="row formulario-login-row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 formulario-login">
+      <form  
+      #formularioRegistrar="ngForm" 
+      novalidate
+      (submit)="registrar(formularioRegistrar)"> 
+          <div class="form-group">
+            <label for="nombreUsuarioNuevo">Nombre Usuario</label>
+            <input id="nombreUsuarioNuevo" type="text" name="nombreusuarionuevo" class="form-control"  placeholder="Ingrese nombre" [(ngModel)]="nombreUsuarioNuevo">
+            <label for="passwordUsuarioNuevo">Password Usuario</label>
+            <input id="passwordUsuarioNuevo" type="password" name="passwordusuarionuevo" class="form-control"  placeholder="Ingrese password" [(ngModel)]="passwordUsuarioNuevo">
+            <label for="correoUsuarioNuevo">Correo</label>
+            <input id="correoUsuarioNuevo" type="email" name="correousuarionuevo" class="form-control"  placeholder="Ingrese correo" [(ngModel)]="correoUsuarioNuevo">
+            <label for="edadUsuarioNuevo">Edad</label>
+            <input id="edadUsuarioNuevo" type="number" name="edadusuarionuevo" class="form-control"  placeholder="Ingrese edad" [(ngModel)]="edadUsuarioNuevo">
+            <label for="direccionUsuarioNuevo">Direccion</label>
+            <input id="direccionUsuarioNuevo" type="text" name="direccionusuarionuevo" class="form-control"  placeholder="Ingrese direccion" [(ngModel)]="direccionUsuarioNuevo" #direccion>       
+          </div>
+          <button type="submit" class="btn btn-danger"
+          [disabled] = "!direccion.value"
+          >REGISTRARSE</button>
+        </form>
+      
+  </div>
+  <div class="col-md-4"></div>
+</div>
+

@@ -24,45 +24,32 @@ export class HttpSailsPrincipal<ClaseEntidad>{
 
     }
 
-    //Crear
-    crear(nuevoRegistro:ClaseEntidad):Observable<ClaseEntidad>{
+     //Crear 
+     crear(nuevoRegistro:ClaseEntidad):Observable<ClaseEntidad>{
         const url = `${this.url}${this.modelo}`;
-        return this.httpClient
-                    .post(url,nuevoRegistro)
-                    .pipe(
-                        map(
-                            (datos)=>{
-                                return datos as ClaseEntidad;
-                            }
-                        )
-                    )
+        return this.httpClient.post<ClaseEntidad>(url,nuevoRegistro)
     }
-
-    //Borrar 
-    eliminarPorId(id){
+    //Buscar 
+    buscarTodos():Observable<ClaseEntidad[]>{
         const url = `${this.url}${this.modelo}`;
-        return this.httpClient.delete(url,id)
-
+        return this.httpClient.get<ClaseEntidad[]>(url);
     }
-
     //Actualizar 
-
-    //BuscarPorId
-
-    //BuscarTodos
-    buscarATodos():Observable<ClaseEntidad>{
-        const url = `${this.url}${this.modelo}`;
-        return this.httpClient
-                    .get(url)
-                    .pipe(
-                        map(
-                            (datos)=>{
-                                return datos as ClaseEntidad;
-                            }
-                        )
-                    )
+    actualizar(id:number,registroAActulizar:ClaseEntidad):Observable<ClaseEntidad>{
+        const url = `${this.url}${this.modelo}/${id}`;
+        return this.httpClient.patch<ClaseEntidad>(url,registroAActulizar);
+    }
+    //Buscar Por Id
+    buscarPorId(id:number):Observable<ClaseEntidad>{
+        const url = `${this.url}${this.modelo}/${id}`;
+        return this.httpClient.get<ClaseEntidad>(url);
     }
 
+    //Eliminar Por Id
+    eliminarPorId(id:number):Observable<ClaseEntidad>{
+        const url = `${this.url}${this.modelo}/${id}`;
+        return this.httpClient.delete<ClaseEntidad>(url);
+    }
 }
 
 

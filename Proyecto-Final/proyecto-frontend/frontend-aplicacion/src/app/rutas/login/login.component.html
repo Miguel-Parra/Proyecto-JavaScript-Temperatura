@@ -4,6 +4,7 @@
   <div class="col-md-4 formulario-login">
       <form  
       #formularioLogin = "ngForm" 
+      novalidate
       (submit)="login(formularioLogin)"> 
           <div class="form-group">
             <label for="nombreUsuario">Nombre Usuario</label>
@@ -15,11 +16,9 @@
           <button type="submit" class="btn btn-danger"
           [disabled] = "!password.value"
           >ENTRAR</button>
-          <button type="button" class="btn btn-success" (click)="registrarse()" style="margin-left:15px;"
-          >REGISTRARSE</button>
-          <br>
-          <br>
         </form>
+        <button type="button" class="btn btn-success" (click)="registrarse()"
+        >REGISTRARSE</button>
   </div>
   <div class="col-md-4"></div>
 </div>
