@@ -15,7 +15,6 @@ import { RegistrarComponent } from './rutas/registrar/registrar.component';
 import { LoginHttpService } from './servicios/http/login-http.service';
 import { RegistrarHttpService } from './servicios/http/registrar-https.service';
 import { LugarHttpService } from './servicios/http/lugar-http.service';
-import { NombreUsuarioService } from './servicios/nombreUsuario/nombre-usuario.service';
 
 
 
@@ -39,8 +38,7 @@ import { NombreUsuarioService } from './servicios/nombreUsuario/nombre-usuario.s
   providers: [
     LoginHttpService,
     RegistrarHttpService,
-    LugarHttpService,
-    NombreUsuarioService
+    LugarHttpService
   ],
   bootstrap: [AppComponent]
 })

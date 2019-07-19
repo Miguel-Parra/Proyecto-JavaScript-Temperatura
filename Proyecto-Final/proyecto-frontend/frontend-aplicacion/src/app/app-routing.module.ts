@@ -20,19 +20,19 @@ const routes: Routes = [
     component:RegistrarComponent
   },
   {
-    path:'menu/:nombre',
+    path:'menu/:idUsuario',
     component:MenuComponent,
     children:[
       {
-        path:'slider',
+        path:'slider/:idUsuario',
         component:SliderComponent
       },
       {
-        path:'lugares',
+        path:'lugares/:idUsuario',
         component:LugaresComponent
       },
       {
-        path:'temperaturas',
+        path:'temperaturas/:idUsuario',
         component:TemperaturasComponent
       },
     ]

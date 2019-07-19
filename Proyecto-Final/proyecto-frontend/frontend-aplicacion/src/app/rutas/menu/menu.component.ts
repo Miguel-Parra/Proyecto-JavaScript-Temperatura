@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NombreUsuarioService } from 'src/app/servicios/nombreUsuario/nombre-usuario.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,15 +8,15 @@ import { NombreUsuarioService } from 'src/app/servicios/nombreUsuario/nombre-usu
 })
 export class MenuComponent implements OnInit {
 
+  
   rutaPaginaInicio;
   rutaPaginaLugares;
   rutaPaginaTemperaturas;
-  nombreUsuario;
+  idUsuario;
   
   
   constructor(private readonly _router:Router,
-    private readonly _activatedRoute:ActivatedRoute,
-    private readonly _nombreService: NombreUsuarioService) { }
+    private readonly _activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
     const parametros$ = this._activatedRoute.params;
@@ -25,11 +24,11 @@ export class MenuComponent implements OnInit {
     parametros$
     .subscribe(
       (parametros)=>{
-        this.nombreUsuario = parametros.nombre;
-        this._nombreService.conseguirNombre(this._nombreService);
-        this.rutaPaginaInicio = ['/menu',this.nombreUsuario,'slider'];
-        this.rutaPaginaLugares = ['/menu',this.nombreUsuario,'lugares']
-        this.rutaPaginaTemperaturas = ['/menu',this.nombreUsuario,'temperaturas']
+        this.idUsuario = parametros.idUsuario;
+        console.log('valor MENU',this.idUsuario);
+        this.rutaPaginaInicio = ['/menu',this.idUsuario,'slider',this.idUsuario];
+        this.rutaPaginaLugares = ['/menu',this.idUsuario,'lugares',this.idUsuario]
+        this.rutaPaginaTemperaturas = ['/menu',this.idUsuario,'temperaturas',this.idUsuario]
       }
     )
 
@@ -37,6 +36,7 @@ export class MenuComponent implements OnInit {
 
   mostrarPaginaInicio(){
     console.log('Entre a Inicio');
+    console.log(this.rutaPaginaInicio);
     this._router.navigate(this.rutaPaginaInicio);
   }
 
@@ -54,6 +54,8 @@ export class MenuComponent implements OnInit {
     const url = ['/login'];
     this._router.navigate(url);
   }
+
+
 
 }
 
