@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NombreUsuarioService } from 'src/app/servicios/nombreUsuario/nombre-usuario.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,15 +9,29 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  rutaPaginaInicio = ['/menu/slider'];
-  rutaPaginaLugares= ['/menu/lugares'];
-  rutaPaginaTemperaturas= ['/menu/temperaturas'];
+  rutaPaginaInicio;
+  rutaPaginaLugares;
+  rutaPaginaTemperaturas;
+  nombreUsuario;
   
   
-  constructor(private readonly _router:Router) { }
+  constructor(private readonly _router:Router,
+    private readonly _activatedRoute:ActivatedRoute,
+    private readonly _nombreService: NombreUsuarioService) { }
 
   ngOnInit() {
+    const parametros$ = this._activatedRoute.params;
 
+    parametros$
+    .subscribe(
+      (parametros)=>{
+        this.nombreUsuario = parametros.nombre;
+        this._nombreService.conseguirNombre(this._nombreService);
+        this.rutaPaginaInicio = ['/menu',this.nombreUsuario,'slider'];
+        this.rutaPaginaLugares = ['/menu',this.nombreUsuario,'lugares']
+        this.rutaPaginaTemperaturas = ['/menu',this.nombreUsuario,'temperaturas']
+      }
+    )
 
   }
 
@@ -35,4 +50,10 @@ export class MenuComponent implements OnInit {
     this._router.navigate(this.rutaPaginaTemperaturas);
   }
 
+  logout(){
+    const url = ['/login'];
+    this._router.navigate(url);
+  }
+
 }
+

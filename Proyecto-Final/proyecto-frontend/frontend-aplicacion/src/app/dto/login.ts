@@ -7,4 +7,5 @@ export interface Login{
     correo?: string;
     edad?: number;
     direccion?: string;
+    arregloUsuarioLugares?: any[];
 }

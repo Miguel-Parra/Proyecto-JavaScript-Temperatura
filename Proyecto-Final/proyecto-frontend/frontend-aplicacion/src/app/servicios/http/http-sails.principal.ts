@@ -26,6 +26,7 @@ export class HttpSailsPrincipal<ClaseEntidad>{
 
      //Crear 
      crear(nuevoRegistro:ClaseEntidad):Observable<ClaseEntidad>{
+         console.log('si',nuevoRegistro);
         const url = `${this.url}${this.modelo}`;
         return this.httpClient.post<ClaseEntidad>(url,nuevoRegistro)
     }

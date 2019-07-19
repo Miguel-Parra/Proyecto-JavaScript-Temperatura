@@ -8,18 +8,32 @@
 module.exports = {
   
   attributes: {
+    identificador: {
+      type: 'string',
+      required: true,
+      minLength: 3,
+      maxLength: 60,
+      unique: true,
+     },
     nombreLugar: {
       type: 'string',
       required: true,
       minLength: 3,
-      maxLength: 60
+      maxLength: 60,
      },
      color:{
       type: 'string',
       required: true,
       minLength: 3,
       maxLength: 60
-     }
+     },
+
+     fkUsuario:{
+      model: 'login',
+      required: true
+    }
+
+
   },
 
 };

@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
         if(arregloRespuesta.productoEncontrado.length == 0){
           alert(`No hay registros del USUARIO ${nombreUsuario} Registrese por favor !!!`);
         }else{
-          
+          const url = ['/menu',nombreUsuario,'slider'];
+          this._router.navigate(url);
         }
       },
       (error)=>{

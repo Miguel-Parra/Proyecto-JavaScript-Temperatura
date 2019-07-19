@@ -27,7 +27,14 @@ module.exports = {
     direccion: {
       type: 'string',
       required: true
+    },
+
+    arregloLugares:{
+      collection: 'lugar',
+      via: 'fkUsuario'
     }
+
+
   },
 
 };

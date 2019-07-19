@@ -9,6 +9,7 @@ import { LoginComponent } from './rutas/login/login.component';
 import { RegistrarComponent } from './rutas/registrar/registrar.component';
 
 
+
 const routes: Routes = [
   {
     path:'login',
@@ -19,7 +20,7 @@ const routes: Routes = [
     component:RegistrarComponent
   },
   {
-    path:'menu',
+    path:'menu/:nombre',
     component:MenuComponent,
     children:[
       {

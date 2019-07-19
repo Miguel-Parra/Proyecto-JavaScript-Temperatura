@@ -17,8 +17,8 @@ module.exports = {
             
             const productoEncontrado = await Login.find({
                 where:{
-                    nombre: {'contains' : nombreUsuario},
-                    password: {'contains' : passwordUsuario}
+                    nombre:  nombreUsuario,
+                    password:  passwordUsuario
                 }   
             });
             
