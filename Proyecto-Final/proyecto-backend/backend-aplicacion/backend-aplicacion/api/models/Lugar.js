@@ -13,7 +13,6 @@ module.exports = {
       required: true,
       minLength: 3,
       maxLength: 60,
-      unique: true,
      },
     nombreLugar: {
       type: 'string',

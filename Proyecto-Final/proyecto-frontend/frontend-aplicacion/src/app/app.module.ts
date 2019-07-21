@@ -15,6 +15,7 @@ import { RegistrarComponent } from './rutas/registrar/registrar.component';
 import { LoginHttpService } from './servicios/http/login-http.service';
 import { RegistrarHttpService } from './servicios/http/registrar-https.service';
 import { LugarHttpService } from './servicios/http/lugar-http.service';
+import { RegistroLugarComponent } from './rutas/lugares/registroLugar/registro-lugar/registro-lugar.component';
 
 
 
@@ -27,7 +28,8 @@ import { LugarHttpService } from './servicios/http/lugar-http.service';
     LugaresComponent,
     TemperaturasComponent,
     LoginComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    RegistroLugarComponent
   ],
   imports: [
     BrowserModule,

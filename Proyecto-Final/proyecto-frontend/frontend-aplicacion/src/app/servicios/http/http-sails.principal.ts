@@ -48,6 +48,7 @@ export class HttpSailsPrincipal<ClaseEntidad>{
 
     //Eliminar Por Id
     eliminarPorId(id:number):Observable<ClaseEntidad>{
+        console.log('recive',id)
         const url = `${this.url}${this.modelo}/${id}`;
         return this.httpClient.delete<ClaseEntidad>(url);
     }

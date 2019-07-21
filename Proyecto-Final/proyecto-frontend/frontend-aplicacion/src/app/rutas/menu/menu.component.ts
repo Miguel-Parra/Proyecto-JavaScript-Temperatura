@@ -27,8 +27,8 @@ export class MenuComponent implements OnInit {
         this.idUsuario = parametros.idUsuario;
         console.log('valor MENU',this.idUsuario);
         this.rutaPaginaInicio = ['/menu',this.idUsuario,'slider',this.idUsuario];
-        this.rutaPaginaLugares = ['/menu',this.idUsuario,'lugares',this.idUsuario]
-        this.rutaPaginaTemperaturas = ['/menu',this.idUsuario,'temperaturas',this.idUsuario]
+        this.rutaPaginaLugares = ['/menu',this.idUsuario,'lugares',this.idUsuario];
+        this.rutaPaginaTemperaturas = ['/menu',this.idUsuario,'temperaturas',this.idUsuario];
       }
     )
 

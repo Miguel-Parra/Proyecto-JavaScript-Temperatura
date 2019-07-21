@@ -7,6 +7,7 @@ import { LugaresComponent } from './rutas/lugares/lugares.component';
 import { TemperaturasComponent } from './rutas/temperaturas/temperaturas.component';
 import { LoginComponent } from './rutas/login/login.component';
 import { RegistrarComponent } from './rutas/registrar/registrar.component';
+import { RegistroLugarComponent } from './rutas/lugares/registroLugar/registro-lugar/registro-lugar.component';
 
 
 
@@ -29,7 +30,7 @@ const routes: Routes = [
       },
       {
         path:'lugares/:idUsuario',
-        component:LugaresComponent
+        component:LugaresComponent,
       },
       {
         path:'temperaturas/:idUsuario',

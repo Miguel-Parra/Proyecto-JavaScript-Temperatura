@@ -6,7 +6,6 @@
     </div>
 </div>
 
-
 <div class="tabla" [hidden]="mostrar">
         <table class="table">
           <thead class="thead-dark">
@@ -19,21 +18,19 @@
           </thead>
           <!--USAR EL NGFOR RECIBIENDO COMO PARAMETRO DEL GET EL ARREGLO DE LUGARES, PASAR POR LOS SERVICIOS-->
           <tbody>
-            <tr [hidden]="esconder">
-              <th scope="row">1</th>
-              <td>2</td>
-              <td>3</td>
+            <tr [hidden]="esconder" *ngFor="let lugar of arregloLugares">
+              <th scope="row">{{lugar.identificador}}</th>
+              <td>{{lugar.nombreLugar}}</td>
+              <td>{{lugar.color}}</td>
               <td>
-                <button type="submit" class="btn btn-primary" (click)="eliminarLugar()">ACTUALIZAR</button>
-                  &nbsp;
-                <button type="submit" class="btn btn-primary" (click)="eliminarLugar()">ELIMINAR</button>
+                <button type="button" class="btn btn-primary" (click)="eliminarLugar(lugar.id)">ELIMINAR</button>
               </td>
             </tr>    
           </tbody>
         </table>
       </div>
 
-<div class="formulario-lugar" [hidden]="!mostrar">
+      <div class="formulario-lugar" [hidden]="!mostrar">
         <div class="row formulario-login-row">
           <div class="col-md-3"></div>
           <div class="col-md-6 formulario-login">
@@ -54,7 +51,7 @@
                       <option  [ngValue]="verde" value="Verde">Verde</option>
                     </select>
                   </div>
-                  <button type="submit" class="btn btn-primary" [hidden]="!mostrar" (click)="mostrarPaginaLugar(false)"
+                  <button type="submit" class="btn btn-primary"  (click)="mostrarPaginaLugar(false)"
                   [disabled]="formularioLugar.invalid">AÑADIR</button>
                 </form>
           </div>

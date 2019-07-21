@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LugarHttpService } from 'src/app/servicios/http/lugar-http.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginHttpService } from 'src/app/servicios/http/login-http.service';
+
 
 @Component({
   selector: 'app-lugares',
@@ -9,13 +10,16 @@ import { LoginHttpService } from 'src/app/servicios/http/login-http.service';
   styleUrls: ['./lugares.component.css']
 })
 export class LugaresComponent implements OnInit {
+  idUsuario;
 
   mostrar = false;
-
-  idUsuario;
+  arregloLugares;
+  idActualizar;
+  ocultar = false;
 
   constructor(private readonly _lugarHttpService: LugarHttpService,
               private readonly _activatedRoute:ActivatedRoute,
+              private readonly _router:Router,
               private readonly _loginHttpService:LoginHttpService) { }
 
   ngOnInit() {
@@ -30,18 +34,31 @@ export class LugaresComponent implements OnInit {
       }
     )
 
+  const respuestaLugaresPorUsuario$ = this._loginHttpService.buscarPorId(this.idUsuario);
+  respuestaLugaresPorUsuario$
+  .subscribe(
+    (datos)=>{
+        const respuestaString =JSON.parse(JSON.stringify(datos));
+        this.arregloLugares = respuestaString.arregloLugares;
+        console.log(this.arregloLugares);
+
+    }
+  );
+
   }
 
-  mostrarRegistroLugar(valor){
-    this.mostrar = valor;
+  mostrarPaginaLugar(mostrar){
+    const rutaPaginaLugar = ['/menu',this.idUsuario,'lugares',this.idUsuario];
+    this._router.navigate(rutaPaginaLugar);
+    this.mostrar = mostrar;
   }
 
-  mostrarPaginaLugar(valor){
-    this.mostrar = valor
+  mostrarRegistroLugar(mostrar){
+    this.mostrar = mostrar;
   }
 
   anadirLugar(formulario){
-   const nombreLugar = formulario.controls.nombrelugar.value;
+    const nombreLugar = formulario.controls.nombrelugar.value;
     const colorLugar = formulario.controls.color.value;
     const identificadorLugar = formulario.controls.identificadorlugar.value;
     const lugarNuevo = {
@@ -57,10 +74,45 @@ export class LugaresComponent implements OnInit {
     .subscribe(
       (datos)=>{
         console.log(datos);
+        this.mostrarDatosTabla();
       },
       (error)=>{
         alert('No se almaceno el lugar, Ya existe ese identificador');
-      }
+      }  
     );
   }
+
+
+
+  eliminarLugar(idLugar){
+    console.log(idLugar);
+   const respuestaEliminar$ = this._lugarHttpService.eliminarPorId(idLugar);
+   respuestaEliminar$
+   .subscribe(
+    (datos)=>{
+      console.log(datos);
+      this.mostrarDatosTabla();
+    },
+    (error)=>{
+      alert('No se pudo eliminar');
+    }  
+  );
+
+  };
+
+  mostrarDatosTabla(){
+    const respuestaLugaresPorUsuario$ = this._loginHttpService.buscarPorId(this.idUsuario);
+    respuestaLugaresPorUsuario$
+    .subscribe(
+      (datos)=>{
+          const respuestaString =JSON.parse(JSON.stringify(datos));
+          this.arregloLugares = respuestaString.arregloLugares;
+          console.log(this.arregloLugares);
+  
+      }
+    );
+  
+  };
+  
+  
 }
