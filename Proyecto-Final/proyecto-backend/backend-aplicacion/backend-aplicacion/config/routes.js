@@ -12,4 +12,12 @@ module.exports.routes = {
   'GET /autenticarUsuario/:usuario/:password': { 
     action: 'login/autenticar'
   },
+
+  'POST /prenderLed/:colorLed':{
+    action:'led/encenderLed'
+  },
+
+  'POST /apagarLed/:apagar':{
+    action: 'led/apagar'
+  },
 };

@@ -70,10 +70,19 @@ export class LugaresComponent implements OnInit {
 
     const respuestaLugar$ = this._lugarHttpService.crear(lugarNuevo);
 
+    const respuestaPrender$ = this._lugarHttpService.prenderLedLugar(colorLugar);
+    respuestaPrender$.subscribe(
+    (datos)=>{
+      console.log(datos);
+    },
+    (error)=>{
+      console.log(error);
+    }
+    );
     respuestaLugar$
     .subscribe(
       (datos)=>{
-        console.log(datos);
+        console.log(datos); 
         this.mostrarDatosTabla();
       },
       (error)=>{
@@ -113,6 +122,19 @@ export class LugaresComponent implements OnInit {
     );
   
   };
+
+  apagarLeds(valor){
+    const respuestaApagar$ = this._lugarHttpService.apagarLedLugar(valor);
+    respuestaApagar$
+    .subscribe(
+      (datos)=>{
+        console.log(datos);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
   
   
 }

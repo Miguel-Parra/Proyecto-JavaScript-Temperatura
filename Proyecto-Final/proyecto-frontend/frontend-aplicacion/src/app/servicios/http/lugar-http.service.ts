@@ -13,4 +13,15 @@ export class LugarHttpService extends HttpSailsPrincipal<Lugar>{
         super(_httpClient,environment.url,'/Lugar');
     }
 
+
+    prenderLedLugar(color){
+        console.log("COLOR",color);
+        const url = `${this.url}/prenderLed/${color}`;
+        return this._httpClient.post(url,{colorLugar:color});
+    }
+
+    apagarLedLugar(valor){
+        const url = `${this.url}/apagarLed/${valor}`;
+        return this._httpClient.post(url,{apagar:valor});
+    }
 }

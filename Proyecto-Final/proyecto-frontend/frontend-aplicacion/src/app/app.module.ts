@@ -18,6 +18,8 @@ import { LugarHttpService } from './servicios/http/lugar-http.service';
 import { RegistroLugarComponent } from './rutas/lugares/registroLugar/registro-lugar/registro-lugar.component';
 
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { TemperaturaHttpService } from './servicios/http/temperatura-http-service';
 
 @NgModule({
   declarations: [
@@ -35,12 +37,14 @@ import { RegistroLugarComponent } from './rutas/lugares/registroLugar/registro-l
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     LoginHttpService,
     RegistrarHttpService,
-    LugarHttpService
+    LugarHttpService,
+    TemperaturaHttpService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,12 +1,8 @@
 
-.celda-boton{
-    border: solid 3px black;
-    text-align: center;
-}
-.celda-imagen{
-    text-align: center;
-}
 .logo-temperatura{
-    width: 45px;
-    height: 45px;
+    width: 75px;
+    height: 75px;
+}
+.btn{
+    padding: 15px;
 }
