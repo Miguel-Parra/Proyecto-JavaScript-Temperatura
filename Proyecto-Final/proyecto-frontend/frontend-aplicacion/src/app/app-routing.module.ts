@@ -8,43 +8,33 @@ import { TemperaturasComponent } from './rutas/temperaturas/temperaturas.compone
 import { LoginComponent } from './rutas/login/login.component';
 import { RegistrarComponent } from './rutas/registrar/registrar.component';
 import { RegistroLugarComponent } from './rutas/lugares/registroLugar/registro-lugar/registro-lugar.component';
+import {EstaLogueadoPolicy} from "./politicas/esta-logueado.policy";
 
 
 
 const routes: Routes = [
   {
-    path:'login',
-    component:LoginComponent
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path:'registrar',
-    component:RegistrarComponent
+    path: 'registrar',
+    component: RegistrarComponent
   },
   {
-    path:'menu/:idUsuario',
-    component:MenuComponent,
-    children:[
-      {
-        path:'slider/:idUsuario',
-        component:SliderComponent
-      },
-      {
-        path:'lugares/:idUsuario',
-        component:LugaresComponent,
-      },
-      {
-        path:'temperaturas/:idUsuario',
-        component:TemperaturasComponent
-      },
-    ]
+    path: 'lugares',
+    component: LugaresComponent,
+    canActivate: [
+      EstaLogueadoPolicy
+    ],
   },
   {
-    path:'',
-    redirectTo:'/login',
-    pathMatch:'full'
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   },
   {
-    path:'**',
+    path: '**',
     component: RutaNoEncontradaComponent
   }
 ];

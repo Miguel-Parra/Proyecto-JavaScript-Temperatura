@@ -1,5 +1,5 @@
 /**
- * Temperatura.js
+ * Sensor.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,14 +8,15 @@
 module.exports = {
 
   attributes: {
-    medicion: {
-      type:'number'
-    },
-    numeroLed : {
-      type: 'number'
-    },
-    idSensor: {
+    serie : {
       type: 'string'
+    },
+    tipo : {
+      type: 'string'
+    },
+    lugaresDelSensor: {
+      collection: 'lugar',
+      via: 'fkSensor'
     }
   },
 

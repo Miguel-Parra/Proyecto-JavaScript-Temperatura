@@ -9,8 +9,8 @@ import { RegistrarHttpService } from 'src/app/servicios/http/registrar-https.ser
 })
 export class RegistrarComponent implements OnInit {
 
-  constructor(private readonly _router:Router,
-              private readonly _registrarHttpService:RegistrarHttpService) {
+  constructor(private readonly _router: Router,
+              private readonly _registrarHttpService: RegistrarHttpService) {
 
   }
 
@@ -19,7 +19,7 @@ export class RegistrarComponent implements OnInit {
   ngOnInit() {
   }
 
-  registrar(formulario){
+  registrar(formulario) {
     const nombreUsuario = formulario.controls.nombreusuarionuevo.value;
     const passwordUsuario = formulario.controls.passwordusuarionuevo.value;
     const edadUsuario = formulario.controls.edadusuarionuevo.value;
@@ -31,22 +31,26 @@ export class RegistrarComponent implements OnInit {
       edad: edadUsuario,
       direccion: direccionUsuario,
       correo: correoUsuario,
-    }
+      rol: 'usuario',
+    };
 
     const respuestaRegistrar$ = this._registrarHttpService.crear(usuarioNuevo);
 
     respuestaRegistrar$
     .subscribe(
-      (datos)=>{
-        console.log('datos',datos);
+      (datos) => {
+        console.log('datos', datos);
         const url = ['/login'];
         this._router.navigate(url);
       },
-      (error)=>{
+      (error) => {
         console.log(error);
       }
-    )
-
+    );
+  }
+  regresar() {
+    const url = ['/login'];
+    this._router.navigate(url);
   }
 
 }

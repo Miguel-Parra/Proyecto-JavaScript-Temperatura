@@ -8,25 +8,24 @@
 declare var Login;
 
 module.exports = {
-  
+
     autenticar: async (req,res)=>{
         const parametros = req.allParams();
         const nombreUsuario = parametros.usuario;
         const passwordUsuario = parametros.password;
         try{
-            
             const productoEncontrado = await Login.find({
                 where:{
                     nombre:  nombreUsuario,
                     password:  passwordUsuario
-                }   
+                }
             });
-            
+
             return res.ok({
                 mensaje: `Bienvenido ${nombreUsuario}`,
                 productoEncontrado: productoEncontrado
             })
-        
+
         } catch(e){
             console.error(e);
             return res.serverError({

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>GRAFICA</h1>
+<div mat-dialog-content>
+<div class="grafica">
+  <canvas id="lineChart"></canvas>
+</div>
+</div>
+<div mat-dialog-actions>
+  <p-button label="Salir" styleClass="ui-button-success"
+            (onClick)="cancelar()"></p-button>
+  <p-button label="Activar ventilador" styleClass="ui-button-primary"
+            (onClick)="prenderVentilador()"></p-button>
+</div>

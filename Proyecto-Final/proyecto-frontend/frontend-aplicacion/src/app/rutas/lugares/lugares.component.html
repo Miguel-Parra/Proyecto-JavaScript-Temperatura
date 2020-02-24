@@ -1,60 +1,74 @@
-<h1>LUGARES</h1>
-
-<div class="row">
-    <div class="col-md-6">
-        <button type="button" class="btn btn-success btn-inicio" [hidden]="mostrar" (click)="mostrarRegistroLugar(true)"> Agregar Nuevo Lugar</button>
+<br>
+<p-card>
+  <div class="row">
+    <div class="col-md-11">
+      <h4 style="text-align: start; "> {{nombre}} - {{correo}}</h4>
     </div>
+    <div class="col-md-1">
+      <button class="btn btn-danger" (click)="logout()">SALIR</button>
+    </div>
+  </div>
+</p-card>
+
+<br>
+<div class="row">
+  <div class="col-md-1 celda-imagen">
+    <img src="../../../assets/imagenes/logo-temperatura.png" alt="logo_temperatura" class="logo-temperatura">
+  </div>
+  <div class="col-md-10">
+    <h1>LUGARES</h1>
+  </div>
+  <div class="col-md-1 celda-imagen">
+    <img src="../../../assets/imagenes/logo-temperatura.png" alt="logo_temperatura" class="logo-temperatura">
+  </div>
 </div>
 
-<div class="tabla" [hidden]="mostrar">
-        <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">IDENTIFICADOR</th>
-              <th scope="col">NOMBRE DEL LUGAR</th>
-              <th scope="col">COLOR</th>
-              <th scope="col">ACCIÓN</th>
-            </tr>
-          </thead>
-          <!--USAR EL NGFOR RECIBIENDO COMO PARAMETRO DEL GET EL ARREGLO DE LUGARES, PASAR POR LOS SERVICIOS-->
-          <tbody>
-            <tr [hidden]="esconder" *ngFor="let lugar of arregloLugares">
-              <th scope="row">{{lugar.identificador}}</th>
-              <td>{{lugar.nombreLugar}}</td>
-              <td>{{lugar.color}}</td>
-              <td>
-                <button type="button" class="btn btn-primary" (click)="eliminarLugar(lugar.id)">ELIMINAR</button>
-              </td>
-            </tr>    
-          </tbody>
-        </table>
-      </div>
 
-      <div class="formulario-lugar" [hidden]="!mostrar">
-        <div class="row formulario-login-row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6 formulario-login">
-              <form  
-              #formularioLugar = "ngForm" 
-              (submit)="anadirLugar(formularioLugar)"> 
-                  <div class="form-group">
-                    <label for="identificadorLugar">IDENTIFICADOR:</label>
-                    <input id="identificadorLugar" required type="text" name="identificadorlugar" class="form-control"  placeholder="LOO1" [(ngModel)]="identificadorLugar">
-                    
-                    <label for="nombreLugar">NOMBRE DEL LUGAR:</label>
-                    <input id="nombreLugar" required type="text" name="nombrelugar" class="form-control"  placeholder="Ingrese Nombre del Lugar" [(ngModel)]="nombreLugar">
-    
-                    <label for="color">COLOR:</label>
-                    <br>
-                    <select name="color" [(ngModel)]="seleccionarValor">
-                      <option [ngValue]="rojo" value="Rojo">Rojo</option>
-                      <option  [ngValue]="verde" value="Verde">Verde</option>
-                    </select>
-                  </div>
-                  <button type="submit" class="btn btn-primary"  (click)="mostrarPaginaLugar(false)"
-                  [disabled]="formularioLugar.invalid">AÑADIR</button>
-                </form>
-          </div>
-          <div class="col-md-3"></div>
-        </div>
-      </div>
+
+  <span class="ui-float-label">
+  <input id="float-input"
+         size="30"
+         type="text"
+         name="fecha"
+         [(ngModel)]="busquedaNombre"
+         pInputText
+         style="height: 40px">
+  <label for="float-input"></label>
+  <button class="btn btn-primary" (click)="buscarPorNombre()">Buscar</button>
+  </span>
+
+  <br>
+  <button class="btn btn-success" (click)="abrirLugar()">Añadir nuevo lugar</button>
+  <br>
+
+  <p-table [value]="arregloLugares"
+           [paginator]="true"
+           [rows]=3>
+    <ng-template pTemplate="caption">
+      Lista de lugares de {{nombre}}
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Identificador</th>
+        <th>Nombre del Lugar</th>
+        <th>Estado ventilador</th>
+        <th>Sensor</th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lugar>
+      <tr>
+        <td>{{lugar.identificador}}</td>
+        <td>{{lugar.nombreLugar}}</td>
+        <td>{{lugar.color}}</td>
+        <td>{{lugar.fkSensor.serie}}</td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="verGrafica(lugar)" style="width: 50%">Ver gráfica</button>
+          <button type="button" class="btn btn-danger" (click)="eliminarLugar(lugar.id, lugar.numeroLed)" style="width: 50%">Desconectar</button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+
+

@@ -1,15 +1,18 @@
 <div class="grafica">
-    <div class="row">
-        <div class="col-md-6">
-            <button type="button" class="btn btn-success btn-inicio" (click)="actualizarGrafica()">Actualizar Datos</button>
-        </div>
-        <div class="col-md-6">
-                <select name="color" [(ngModel)]="seleccionarValor">
-                        <option *ngFor='let lugar of arregloLugares'[ngValue]="lugar.color" >{{lugar.nombreLugar}}</option>
-                </select>
-                <br>
-                <button type="button" class="btn btn-success btn-inicio" (click)="cambioGrafica()">Cambiar Lugar</button>
-        </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="btn btn-success btn-inicio" (click)="actualizarGrafica()">Actualizar Datos</button>
     </div>
-    <canvas id="lineChart"></canvas>
+    <div class="col-md-6">
+      <select name="color" [(ngModel)]="seleccionarValor">
+        <option *ngFor='let lugar of arregloLugares'[ngValue]="lugar.color" >{{lugar.nombreLugar}}</option>
+      </select>
+      <br>
+      <button type="button" class="btn btn-success btn-inicio" (click)="cambioGrafica()">Cambiar Lugar</button>
+    </div>
+  </div>
+  <div class="row">
+    <p-chart type="line" [data]="arregloTemperaturas"></p-chart>
+  </div>
+  <canvas id="lineChart"></canvas>
 </div>

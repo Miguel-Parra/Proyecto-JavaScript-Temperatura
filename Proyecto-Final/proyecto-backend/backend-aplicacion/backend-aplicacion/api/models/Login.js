@@ -12,11 +12,11 @@ module.exports = {
       type: 'string',
       required: true
     },
-    password:{
+    password: {
       type: 'string',
       required: true
     },
-    correo:{
+    correo: {
       type:'string',
       isEmail: true
     },
@@ -28,7 +28,9 @@ module.exports = {
       type: 'string',
       required: true
     },
-
+    rol: {
+      type: 'string'
+    },
     arregloLugares:{
       collection: 'lugar',
       via: 'fkUsuario'

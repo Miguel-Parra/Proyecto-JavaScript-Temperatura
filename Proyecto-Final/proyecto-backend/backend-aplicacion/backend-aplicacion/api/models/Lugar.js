@@ -6,28 +6,28 @@
  */
 
 module.exports = {
-  
+
   attributes: {
     identificador: {
       type: 'string',
       required: true,
       minLength: 3,
       maxLength: 60,
-     },
+    },
     nombreLugar: {
       type: 'string',
       required: true,
       minLength: 3,
       maxLength: 60,
-     },
-     color:{
-      type: 'string',
-      required: true,
-      minLength: 3,
-      maxLength: 60
-     },
-
-     fkUsuario:{
+    },
+    numeroLed:{
+      type: 'number',
+    },
+    fkSensor:{
+      model: 'sensor',
+      required: true
+    },
+    fkUsuario:{
       model: 'login',
       required: true
     }

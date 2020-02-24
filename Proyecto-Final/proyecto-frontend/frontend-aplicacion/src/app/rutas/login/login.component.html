@@ -1,24 +1,53 @@
-<h1>LOGIN</h1>
 <div class="row formulario-login-row">
-  <div class="col-md-4"></div>
-  <div class="col-md-4 formulario-login">
-      <form  
-      #formularioLogin = "ngForm" 
-      novalidate
-      (submit)="login(formularioLogin)"> 
-          <div class="form-group">
-            <label for="nombreUsuario">Nombre Usuario</label>
-            <input id="nombreUsuario" type="text" name="nombreusuario" class="form-control"  placeholder="Ingrese Nombre" [(ngModel)]="nombreUsuario">
-            <label for="passwordUsuario">Password Usuario</label>
-            <input id="passwordUsuario" type="password" name="passwordusuario" class="form-control"  placeholder="Ingrese Password" [(ngModel)]="passwordUsuario" #password>
-            <small id="mensaje" class="form-text text-muted">Hola, Bienvenido a GreenTemp</small>
-          </div>
-          <button type="submit" class="btn btn-danger"
-          [disabled] = "!password.value"
-          >ENTRAR</button>
-        </form>
-        <button type="button" class="btn btn-success" (click)="registrarse()"
-        >REGISTRARSE</button>
+  <div class="col-md-7">
+    <img src="https://thesquirmfirm.com/wp-content/uploads/2015/07/Check-Maintain-Worm-Bin-Temperature.jpg" style="width: 100%">
+
   </div>
-  <div class="col-md-4"></div>
+  <div class="col-md-5">
+    <div class="row formulario-login-row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10 formulario-login">
+        <h1>LOGIN</h1>
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+        <img src="https://image.flaticon.com/icons/png/512/44/44948.png" style="width: 100%">
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+        <br>
+        <p-card >
+          <h4 style="text-align: center">BIENVENIDO</h4>
+          <form
+              #formularioLogin = "ngForm"
+              novalidate
+          >
+            <div class="form-group">
+              <br>
+              <label for="nombreUsuario">Nombre Usuario</label>
+              <input id="nombreUsuario" type="text" name="nombreusuario" class="form-control"  placeholder="Ingrese Nombre" [(ngModel)]="nombreUsuario">
+              <br>
+              <label for="passwordUsuario">Password Usuario</label>
+              <input id="passwordUsuario" type="password" name="passwordusuario" class="form-control"  placeholder="Ingrese Password" [(ngModel)]="passwordUsuario" #password>
+            </div>
+            <div class="row">
+              <div class="col-lg-1"></div>
+              <div class="col-lg-5">
+                <button type="submit" class="btn btn-primary" style="width: 100%"
+                        [disabled] = "!password.value" (click)="login(formularioLogin)"
+                >ENTRAR</button>
+              </div>
+              <div class="col-lg-5">
+                <button type="button" style="width: 100%" class="btn btn-success" (click)="registrar()"
+                >REGISTRAR</button>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
+          </form>
+        </p-card>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-1"></div>
 </div>
+

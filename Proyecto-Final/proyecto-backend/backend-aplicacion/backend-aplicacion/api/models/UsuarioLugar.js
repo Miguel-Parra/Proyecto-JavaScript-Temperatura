@@ -8,16 +8,16 @@
 module.exports = {
 
   attributes: {
-        //Configuracion del hijo 
-        fkUsuario:{//nombre del campo FK
-          model:'login', //modelo a relacionarse (Papá)
-          required: true //OPCIONAL 
-        },
-        //Configuracion del hijo 
-        fkLugar:{//nombre del campo FK
-          model:'lugar', //modelo a relacionarse (Papá)
-          required: true //OPCIONAL 
-        }
+    //Configuracion del hijo
+    fkUsuario:{//nombre del campo FK
+      model:'login', //modelo a relacionarse (Papá)
+      required: true //OPCIONAL
+    },
+    //Configuracion del hijo
+    fkLugar:{//nombre del campo FK
+      model:'lugar', //modelo a relacionarse (Papá)
+      required: true //OPCIONAL
+    }
   },
 
 };

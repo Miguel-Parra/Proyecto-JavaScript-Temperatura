@@ -1,26 +1,36 @@
-<div class="row">
-        <div class="col-md-9"></div>
-        <div class="col-md-3">
-                <button class="btn btn-primary" (click)="logout()">SALIR</button>
-        </div>
-</div>
-<h1>MENU</h1>
-<div class="contenedor-menu">
-    <div class="row menu">
-            <div class="col-md-2 celda-vacia"></div>
-            <div class="col-md-2 celda-imagen">
-                <img src="../../../assets/imagenes/logo-temperatura.png" alt="logo_temperatura" class="logo-temperatura">
-            </div>
-            <div class="col-md-2 celda-boton">
-                <button type="button" class="btn btn-success btn-inicio" (click)="mostrarPaginaInicio()">INICIO</button>
-            </div>
-            <div class="col-md-2 celda-boton">
-                <button type="button" class="btn btn-success btn-agregar-lugar" (click)="mostrarPaginaLugares()">AGREGAR LUGAR</button>
-            </div>
-            <div class="col-md-2 celda-boton">
-                <button type="button" class="btn btn-success btn-ver-temperatura" (click)="mostrarPaginaTemperaturas()">VER TEMPERATURA</button>
-            </div>
-            <div class="col-md-2 celda-vacia"></div>
+<br>
+<p-card>
+  <div class="row">
+    <div class="col-md-11">
+      <h4 style="text-align: start; "> {{nombre}} - {{correo}}</h4>
     </div>
+    <div class="col-md-1">
+      <button class="btn btn-danger" (click)="logout()">SALIR</button>
+    </div>
+  </div>
+</p-card>
+<br>
+<div class="contenedor-menu">
+  <div class="row menu">
+    <div class="col-md-1 celda-imagen">
+      <img src="../../../assets/imagenes/logo-temperatura.png" alt="logo_temperatura" class="logo-temperatura">
+    </div>
+    <div class="col-md-10 ">
+      <div class="row">
+        <div class="col-md-2 celda-boton"></div>
+        <div class="col-md-3 celda-boton">
+          <button type="button" class="btn btn-primary btn-agregar-lugar" style="width: 100%" (click)="mostrarPaginaLugares()">LUGARES</button>
+        </div>
+        <div class="col-md-2 celda-boton"></div>
+        <div class="col-md-3 celda-boton">
+          <button type="button" class="btn btn-primary btn-ver-temperatura" style="width: 100%" (click)="mostrarPaginaTemperaturas()">TEMPERATURA</button>
+        </div>
+        <div class="col-md-2 celda-boton"></div>
+      </div>
+    </div>
+    <div class="col-md-1 celda-imagen">
+      <img src="../../../assets/imagenes/logo-temperatura.png" alt="logo_temperatura" class="logo-temperatura">
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>

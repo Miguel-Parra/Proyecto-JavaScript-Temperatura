@@ -16,10 +16,18 @@ import { LoginHttpService } from './servicios/http/login-http.service';
 import { RegistrarHttpService } from './servicios/http/registrar-https.service';
 import { LugarHttpService } from './servicios/http/lugar-http.service';
 import { RegistroLugarComponent } from './rutas/lugares/registroLugar/registro-lugar/registro-lugar.component';
-
-
+import {TabViewModule} from 'primeng/tabview';
+import {PanelModule} from 'primeng/panel';
+import {CardModule} from 'primeng/card';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { TemperaturaHttpService } from './servicios/http/temperatura-http-service';
+import { TemperaturaHttpService } from './servicios/http/temperatura-http.service';
+import {ChartModule} from "primeng/chart";
+import {ButtonModule} from "primeng/button";
+import { ModalAgregarLugarComponent } from './rutas/modal/modal-agregar-lugar/modal-agregar-lugar.component';
+import { ModalVerTemperaturaComponent } from './rutas/modal/modal-ver-temperatura/modal-ver-temperatura.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TableModule} from "primeng/table";
+import {AuthService} from "./servicios/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -31,20 +39,34 @@ import { TemperaturaHttpService } from './servicios/http/temperatura-http-servic
     TemperaturasComponent,
     LoginComponent,
     RegistrarComponent,
-    RegistroLugarComponent
+    RegistroLugarComponent,
+    ModalAgregarLugarComponent,
+    ModalVerTemperaturaComponent,
+  ],
+  entryComponents: [
+    ModalVerTemperaturaComponent,
+    ModalAgregarLugarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ButtonModule,
+    TableModule,
     BrowserAnimationsModule,
+    MatDialogModule,
+    TabViewModule,
+    PanelModule,
+    CardModule,
+    ChartModule,
   ],
   providers: [
     LoginHttpService,
     RegistrarHttpService,
     LugarHttpService,
-    TemperaturaHttpService
+    TemperaturaHttpService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

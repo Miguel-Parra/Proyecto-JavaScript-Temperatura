@@ -1,0 +1,65 @@
+<h1 mat-dialog-title>CREAR LUGAR</h1>
+
+<div mat-dialog-content>
+  <form #formularioEditar="ngForm" >
+    <div>
+      <label for="nombreId">IDENTIFICADOR: </label>
+      <input id="nombreId"
+             type="text"
+             name="nombre"
+             required
+             title="Llenar el Nombre"
+             minlength="3"
+             maxlength="15"
+             placeholder="{{identificador}}"
+             #nombreInput ="ngModel"
+             [(ngModel)]="identificador">
+    </div>
+    <div *ngIf="nombreInput.touched && nombreInput.dirty && nombreInput.errors">
+      <p *ngIf="nombreInput.errors.required ">
+        Este campo es requerido.
+      </p>
+      <p *ngIf="nombreInput.errors.minlength ">
+        llenar con un minimo de 2 caracteres
+      </p>
+      <p *ngIf="nombreInput.errors.maxlength ">
+        Llenar con un maximo de 200 caracteres
+      </p>
+    </div>
+    <br>
+    <div>
+      <label for="apellidoId">NOMBRE DEL LUGAR: </label>
+      <input id="apellidoId"
+             type="text"
+             name="apellido"
+             required
+             placeholder="{{nombreLugar}}"
+             title="Llenar el nombre del lugar"
+             minlength="6"
+             maxlength="15"
+             [(ngModel)]="nombreLugar"
+             #apellidoI = "ngModel">
+    </div>
+    <div *ngIf="apellidoI.touched && apellidoI.dirty && apellidoI.errors">
+      <p *ngIf="apellidoI.errors.required ">
+        Este campo es requerido.
+      </p>
+      <p *ngIf="apellidoI.errors.minlength ">
+        llenar con un minimo de 6 caracteres
+      </p>
+      <p *ngIf="apellidoI.errors.maxlength ">
+        Llenar con un maximo de 200 caracteres
+      </p>
+    </div>
+    <br>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <p-button label="Cancelar" styleClass="ui-button-secondary"
+            (onClick)="cancelar()"></p-button>
+  <p-button label="Aceptar" styleClass="ui-button-sucess"
+            (onClick)="aceptar()"
+            [disabled]="formularioEditar.invalid"
+  ></p-button>
+</div>
+

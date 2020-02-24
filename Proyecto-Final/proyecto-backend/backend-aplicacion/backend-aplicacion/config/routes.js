@@ -9,15 +9,20 @@
  */
 
 module.exports.routes = {
-  'GET /autenticarUsuario/:usuario/:password': { 
+  'GET /autenticarUsuario/:usuario/:password': {
     action: 'login/autenticar'
   },
 
   'POST /prenderLed/:colorLed':{
     action:'led/encenderLed'
   },
-
-  'POST /apagarLed/:apagar':{
-    action: 'led/apagar'
+  'POST /prenderVentilador/:numeroLed':{
+    action:'led/encenderVentilador'
+  },
+  'POST /apagarLed/:numeroLed' :{
+    action:'led/apagar'
+  },
+  'POST /desconectarLed/:numeroLed' :{
+    action:'led/desconectar'
   },
 };
